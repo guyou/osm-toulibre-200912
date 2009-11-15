@@ -10,7 +10,10 @@ TEXFILES = $(strip $(wildcard *.tex))
 TEXSTEMS = $(strip $(patsubst %.tex,%,${TEXFILES}))
 PDFFILES = $(strip $(patsubst %.tex,%.pdf,${TEXFILES}))
 
-.SUFFIXES: .aux .bbl .tex .dvi .fig .dot .mp .ps .ps1 .eps .pdf .png .html .txt $(.SUFFIXES)
+SVGFIGURES = $(wildcard figures/*.svg)
+FIGURES = $(SVGFIGURES:.svg=.pdf)
+
+.SUFFIXES: .aux .bbl .tex .dvi .fig .dot .mp .ps .ps1 .eps .pdf .png .html .txt .svg $(.SUFFIXES)
 
 generated = *.out *.mpx *.log *.aux *.blg *.bbl .depend
 
@@ -41,12 +44,15 @@ generated = *.out *.mpx *.log *.aux *.blg *.bbl .depend
 .eps.pdf:
 	epstopdf $<
 
+.svg.eps:
+	convert $< $@
+
 
 
 
 all: osm-slides.pdf
 
-osm-slides.pdf: $(TEXFILES)
+osm-slides.pdf: $(TEXFILES) $(FIGURES)
 
 clean:
 	-rm -f ${generated}
