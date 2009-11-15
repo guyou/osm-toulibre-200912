@@ -33,10 +33,11 @@
   \begin{tikzpicture}[remember picture,overlay]
    \node[xshift=-1cm,yshift=-1.3cm] at (current page.north east) {\includegraphics[width=2cm]{figures/OSM-step1}};
   \end{tikzpicture}
-
   Sources de données:
+
   \begin{itemize}
   \item logs GPS crées à pied, à vélo, en voiture, en train, avec notes et photos du trajet
+  %\item walking paper
   \item Cadastre numérique (en France)
   \item photos satellite Yahoo! (dans les zones couvertes)
   \item CORINE land cover (en Europe)
@@ -74,6 +75,21 @@
    \node[xshift=-1cm,yshift=-1.3cm] at (current page.north east) {\includegraphics[width=2cm]{figures/OSM-step3}};
   \end{tikzpicture}
 
+  Edition de la carte pour adapter les données brutes aux besoins de la carte
+  (simplification du tracé, correction des erreurs, \dots{})
+
+  \begin{itemize}
+  \item Un \textit{n\oe{}ud} est un point représentant une position
+  \item Un \textit{way} (ou chemin) est une séquence de n\oe{}uds
+  \item Si elle est fermée, la séquence représente une zone
+  \end{itemize}
+
+}
+
+\frame { \heading{Traitement}
+  \begin{tikzpicture}[remember picture,overlay]
+   \node[xshift=-1cm,yshift=-1.3cm] at (current page.north east) {\includegraphics[width=2cm]{figures/OSM-step3}};
+  \end{tikzpicture}
 
   \begin{itemize}
   \item Générer et éditer les n\oe{}uds et ways dans OSM
@@ -92,10 +108,29 @@
   \begin{tikzpicture}[remember picture,overlay]
    \node[xshift=-1cm,yshift=-1.3cm] at (current page.north east) {\includegraphics[width=2cm]{figures/OSM-step4}};
   \end{tikzpicture}
+  Il faut maintenant donner un sens à tous ces points et toutes ces lignes
+  (routes, ponts, bâtiments, ligne de bus, \dots{})
+  
+  \begin{itemize}
+  \item Une \textit{relation} est un ensemble de n\oe{}uds et de ways
+    auxquels on donne des propriétés 
+  \item Une \textit{étiquette} (ou tag) peut être appliquée à un n\oe{}ud, un
+    way ou une relation, et consiste de paires \texttt{nom=valeur}
+  \end{itemize}
+  
+\bigskip
+La sémantique des étiquettes est \href{http://wiki.openstreetmap.org/index.php/Map_Features}
+{décrite sur un wiki}. 
+}
+
+\frame { \heading{Édition des données}
+  \begin{tikzpicture}[remember picture,overlay]
+   \node[xshift=-1cm,yshift=-1.3cm] at (current page.north east) {\includegraphics[width=2cm]{figures/OSM-step4}};
+  \end{tikzpicture}
 
   \begin{itemize}
   \item Ajouter des étiquettes et méta-données
-  \item Ajouter des données aux n\oe{}uds et ways pour permettre leur rendu
+  \item Ajouter des informations aux n\oe{}uds et ways pour permettre leur rendu
   \item Outils d'édition: JOSM, Potlatch
   \item Outils de détection d'incohérences:
     \begin{itemize}
@@ -104,6 +139,27 @@
     \item outils en ligne comme Keepright!, Osmose
     \end{itemize}
   \end{itemize}
+}
+
+% http://wiki.openstreetmap.org/index.php/Map_Features
+\frame{ %\heading{Étiquettage} \vfill
+  Exemples: \hfill \includegraphics[width=2cm]{figures/OSM-step4}
+
+  
+  \begin{itemize}
+  \item highway = motorway
+  \item junction = roundabout
+  \item oneway = yes
+  \item cycleway = lane
+  \item waterway = canal
+  \item railway = station
+  \item railway = subway
+  \item leisure = park
+  \item amenity = pub
+  \item shop = supermarket
+  \item tourism = zoo
+  \end{itemize}
+
 }
 
 
